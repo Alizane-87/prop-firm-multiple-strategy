@@ -49,6 +49,11 @@ One Pine indicator: monitors chosen forex pairs + futures, models switchable, au
 dashboard table for all symbols, one alert() → Telegram webhook. ALERTS: only TWO — (1) "watch for iFVG" when the
 second sweep trades into a key level (median ~13 min before entry; ~1 in 5 within 5 min), (2) entry with
 entry/stop/2R/3R. Owner trades manually. Tools: official TradingView MCP + pinescript-mcp + browser pane.
+Owner 8 Nov: the INDICATOR is the daily tool. A strategy() copy with identical rules exists only to check against
+Python (chart symbol, recent weeks — Essential loads ~10k bars). Plan: TradingView Essential, no data packs; use free
+real-time CFD feeds (broker's own if listed, else PEPPERSTONE:NAS100 / OANDA:NAS100USD) + free forex feeds. CME pack
+only when a futures account exists and its TradingView connection doesn't give real-time CME data.
+Build order: MCP connectors → CRT Pine (chart pass, then alerts pass) → demo alerts → next strategy backtest in Python.
 
 ## Repo layout (run everything from the repo root)
 - src/ — crt_core.py (engine), run_*.py (backtests → out/*.json, *.pkl), plot_*.py (charts → out/charts/)
