@@ -1,0 +1,13 @@
+# data and generated files
+data/*
+!data/README.md
+*.pkl
+*.csv
+__pycache__/
+*.pyc
+# secrets — never commit
+.env
+.env.*
+*secret*
+*token*
+*.key
