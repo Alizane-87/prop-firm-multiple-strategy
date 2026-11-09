@@ -63,6 +63,14 @@ Build order: MCP connectors → CRT Pine (chart pass, then alerts pass) → demo
   months; 1.5% → 64%, ~7.5 mo. 5k Pro 1% → 55%, ~11 mo; 0.5% → 79%, ~31 mo. 3R is worse on every row.
   In-sample, so real odds are lower. Bottleneck = ~3.3 trades/month → more tested symbols/strategies needed.
 
+## Owner's targets + risk plan (9 Nov 2026) — src/risk_plan_sim.py
+- Goal: pass fast, NOT wait a year. Add strategies so together they give ≥2 trades/day = 1 trade per account per day.
+- Challenge risk: 0.5% of start balance; ideal trade 1:3. When profit reaches 1.5-2%, risk that whole profit on one
+  1:3 trade (10k P1: 2% → +6% = 8%; P2/Pro: 1.5% → +4.5%). After that trade, back to 0.5%. Master: 0.5% only.
+- Sim (CRT 3R trade shape, 1 trade/day/account): his plan passes faster when it works (Std ~5 vs 6 mo, Pro ~3 vs 4)
+  but lower overall pass rate (Std 64% vs 77% flat 0.5%, Pro 39% vs 56% at +0.13R edge) — it keeps sitting near 0.
+  Within 6 months only ~35-40% pass either way at +0.13R. Lever = edge per trade (need ~+0.3R), not just trade count.
+
 ## Repo layout (run everything from the repo root)
 - src/ — crt_core.py (engine), run_*.py (backtests → out/*.json, *.pkl), plot_*.py (charts → out/charts/)
 - tools/ — mt5_download.py, databento_bars.py (no keys inside; databento_bars only converts downloaded files)
