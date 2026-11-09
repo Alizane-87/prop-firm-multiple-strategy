@@ -55,6 +55,14 @@ real-time CFD feeds (broker's own if listed, else PEPPERSTONE:NAS100 / OANDA:NAS
 only when a futures account exists and its TradingView connection doesn't give real-time CME data.
 Build order: MCP connectors → CRT Pine (chart pass, then alerts pass) → demo alerts → next strategy backtest in Python.
 
+## Owner's FundingPips accounts (bought 9 Nov 2026) — src/prop_sim.py
+- 10k 2-Step Standard: targets 8% / 5%, max loss 10% static, daily 5% (higher of opening balance/equity, 00:00 server).
+- 5k 2-Step Pro: targets 6% / 6%, max loss 6% static, daily 3%. No time limit on either.
+- 30 calendar days without a fully CLOSED trade = breach (inactivity). Hedging banned, incl. across own accounts.
+- Prop sim (bootstrap of the 140 key-level iFVG trades, CFD costs, 2R): 10k Std 1% risk → pass both ~76%, median ~15
+  months; 1.5% → 64%, ~7.5 mo. 5k Pro 1% → 55%, ~11 mo; 0.5% → 79%, ~31 mo. 3R is worse on every row.
+  In-sample, so real odds are lower. Bottleneck = ~3.3 trades/month → more tested symbols/strategies needed.
+
 ## Repo layout (run everything from the repo root)
 - src/ — crt_core.py (engine), run_*.py (backtests → out/*.json, *.pkl), plot_*.py (charts → out/charts/)
 - tools/ — mt5_download.py, databento_bars.py (no keys inside; databento_bars only converts downloaded files)
